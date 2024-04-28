@@ -5,7 +5,7 @@ job('NodeJS example') {
                 url('https://github.com/farazyb/node-example.git')
                 credentials('farazyb') // Use if Jenkins uses credentials ID, otherwise remove this line
             }
-            branch('dlsJob')
+            branch('master')
             userRemoteConfigs {
                 gitConfigName('farazyb')
                 gitConfigEmail('farazyazdanib@gmail.com')
