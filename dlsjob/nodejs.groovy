@@ -3,12 +3,15 @@ job('NodeJS example') {
         git {
             remote {
                 url('https://github.com/farazyb/node-example.git')
-                credentials('farazyb') // Use if Jenkins uses credentials ID, otherwise remove this line
+                credentials('farazyb') // Ensures Jenkins uses the specified credentials ID for repository access
             }
             branch('master')
-            userRemoteConfigs {
-                gitConfigName('farazyb')
-                gitConfigEmail('farazyazdanib@gmail.com')
+            // Correct method to set user config within git
+            extensions {
+                userRemoteConfig {
+                    name('farazyb')
+                    email('farazyazdanib@gmail.com')
+                }
             }
         }
     }
