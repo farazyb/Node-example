@@ -6,14 +6,14 @@ node {
      commit_id = readFile('.git/commit-id').trim()
    }
    stage('test') {
-     nodejs(nodeJSInstallationName: 'nodejs') {
+     nodejs(nodeJSInstallationName: 'NodeJs') {
        sh 'npm install --only=dev'
        sh 'npm test'
      }
    }
    stage('docker build/push') {
      docker.withRegistry('https://index.docker.io/v2/', 'dockerhub') {
-       def app = docker.build("wardviaene/docker-nodejs-demo:${commit_id}", '.').push()
+       def app = docker.build("farazyb75/docker-nodejs-demo:${commit_id}", '.').push()
      }
    }
 }
